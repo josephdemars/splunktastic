@@ -1,0 +1,4 @@
+sudo rpm -e --nodeps rsyslog
+sudo yum install --enablerepo=epel syslog-ng -y
+sudo yum install --enablerepo=epel syslog-ng-libdbi -y
+sudo /etc/init.d/syslog-ng start
