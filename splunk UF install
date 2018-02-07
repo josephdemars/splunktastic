@@ -1,8 +1,11 @@
 # Windows
 msiexec.exe /i splunkforwarder-7.0.2-03bbabbd5c0f-x64-release.msi DEPLOYMENT_SERVER="xxxx:8089" AGREETOLICENSE=Yes /quiet
 
-# Liunux 
-wget -O splunkforwarder-7.0.2-03bbabbd5c0f-linux-2.6-x86_64.rpm 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.0.2&product=universalforwarder&filename=splunkforwarder-7.0.2-03bbabbd5c0f-linux-2.6-x86_64.rpm&wget=true'sudo rpm -i splunkforwarder-7.0.1-2b5b15c4ee89-linux-2.6-x86_64.rpm
-sudo /opt/splunkforwarder/bin/splunk start --accept-license
+# Linux 
+sudo wget -O splunkforwarder-7.0.2-03bbabbd5c0f-linux-2.6-x86_64.rpm 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.0.2&product=universalforwarder&filename=splunkforwarder-7.0.2-03bbabbd5c0f-linux-2.6-x86_64.rpm&wget=true'
+sudo rpm -i splunkforwarder-7.0.2-03bbabbd5c0f-linux-2.6-x86_64.rpm
+sudo -u splunk /opt/splunkforwarder/bin/splunk start --accept-license
 sudo /opt/splunkforwarder/bin/splunk enable boot-start -user splunk
-sudo -u splunk /opt/splunk set deploy-poll xxxxxx.local:8089
+sudo -u splunk /opt/splunkforwarder/bin/splunk edit user admin -password "xxxxxxx" -auth admin:changeme
+sudo -u splunk /opt/splunkforwarder/bin/splunk set deploy-poll splunk-deploy.xxxxxxxx.local:8089
+sudo passwd splunk 
